@@ -1,11 +1,20 @@
 require 'open-uri'
 require 'nokogiri'
+require 'json'
+require 'mongo'
+
+require 'mongo'
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'sw')
 
 movies_array = []
 descricao_array = []
 genero_array = []
 
-for i in 1..2
+for i in 1..200
+  json = {}
   pagina = i
   url = "http://www.adorocinema.com/filmes/todos-filmes/notas-espectadores/?page=#{i}"
   print("\nCrawling page #{i}\n")
@@ -14,12 +23,16 @@ for i in 1..2
 
 
   parse_page.css('#contentlayout')
-            .css('.img_side_content')
-            .css('img')
-            .map do |fig|
+      .css('.img_side_content')
+      .css('img')
+      .map do |fig|
     uri = fig.attr('src')
     name = fig.attr('alt')
-    File.open(File.basename(name),'wb'){ |f| f.write(open(uri).read) }
+    File.open("movie_fig/#{File.basename(name)}",'wb'){
+        |f| f.write(open(uri).read)
+    }
+
+
 
   end
 
@@ -36,16 +49,16 @@ for i in 1..2
     html_filme = open(url)
     movie_page = Nokogiri::HTML(html_filme)
     movie_page.css('.col-xs-12')
-              .css('h1.item')
-              .map do |filme|
-      movies_array.push(filme.inner_html.gsub(/\n/,''))
+        .css('h1.item')
+        .map do |filme|
+      json["titulo"] = filme.inner_html.gsub(/\n/,'')
     end
 
     movie_page.css('.col-xs-12')
         .css('#content-start')
         .css('.synopsis-txt')
         .map do |desc|
-      descricao_array.push(desc.inner_html.gsub(/\n/,''))
+      json["descricao"] = desc.inner_html.gsub(/\n/,'')
     end
 
     one_genre = []
@@ -56,14 +69,14 @@ for i in 1..2
         .map do |genero|
       one_genre.push(genero.text)
     end
-    genero_array.push(one_genre)
+    json["genero"] = (one_genre)
 
 
+    client[:filmes].insert_one json
 
   end
 
-  end
+end
 
-final_array = movies_array.zip(descricao_array)
-final_array = final_array.zip(genero_array)
-print final_array
+client.close
+
