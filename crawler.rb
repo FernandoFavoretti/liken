@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'json'
 require 'mongo'
 
-require 'mongo'
 
 Mongo::Logger.logger.level = ::Logger::FATAL
 
@@ -13,6 +12,7 @@ movies_array = []
 descricao_array = []
 genero_array = []
 
+counter = 0
 for i in 1..200
   json = {}
   pagina = i
@@ -27,15 +27,16 @@ for i in 1..200
       .css('img')
       .map do |fig|
     uri = fig.attr('src')
-    name = fig.attr('alt')
+    name = "mini_#{counter}"
     File.open("movie_fig/#{File.basename(name)}",'wb'){
         |f| f.write(open(uri).read)
     }
+    movies_array.push(name)
+    counter += 1
+    end
 
-
-
-  end
-
+  counter = counter - movies_array.length
+  movies_array.clear
   parse_page.css('#contentlayout')
       .css('#col_main')
       .css('.data_box')
@@ -45,7 +46,6 @@ for i in 1..200
       .css('a')
       .map do |movie|
     url = "http://www.adorocinema.com"+movie["href"]
-    print("\nCrawling url #{url}\n")
     html_filme = open(url)
     movie_page = Nokogiri::HTML(html_filme)
     movie_page.css('.col-xs-12')
@@ -70,8 +70,8 @@ for i in 1..200
       one_genre.push(genero.text)
     end
     json["genero"] = (one_genre)
-
-
+    json["id_movie"] = counter
+    counter += 1
     client[:filmes].insert_one json
 
   end
