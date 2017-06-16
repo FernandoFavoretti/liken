@@ -1,4 +1,4 @@
-ll_movies(collection, field_list, limit):
+def get_all_movies(collection, field_list, limit):
     import json
     if field_list == "all":
         cursor = collection.find({}, {"_id": False}).sort("id_movie", 1).limit(limit)
@@ -22,6 +22,7 @@ ll_movies(collection, field_list, limit):
             js_all.append(movie)
         return json.dumps(js_all)
 
+
 def get_movie_id(collection, id):
     import json
     # -*- coding: utf-8 -*-
@@ -32,3 +33,11 @@ def get_movie_id(collection, id):
         js_all.append(movie)
     return json.dumps(js_all)
 
+def search_movie_by_field(field, query, collection):
+    import json
+    cursor = collection.find({field: "/"+query+"/"}, {"_id": False, field: 1})
+    js_all = []
+    dict_teste = {}
+    for movie in cursor:
+        js_all.append(movie)
+    return json.dumps(js_all)

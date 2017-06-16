@@ -19,7 +19,7 @@ def index():
 
 
 @app.route('/linken/api/health', methods=['GET'])
-def get_scores_from_mongo():
+def get_status_from_mongo():
     import json
     return json.dumps({"STATUS":"UP"}), 200
 
@@ -39,6 +39,13 @@ def get_movie_id(id):
     r.headers["Content-Type"] = "application/json; charset=utf-8"
     return r
 
+@app.route('/linken/api/movies/search/<query>', methods=['GET'])
+def search_on_field(query):
+    from flask import Response
+    js = mongo_helper.search_movie_by_field("titulo",query,collection)
+    r = Response(response=js, status=200, mimetype="application/json")
+    r.headers["Content-Type"] = "application/json; charset=utf-8"
+    return r
 
 ## INTERNAUTAS
 
