@@ -66,7 +66,7 @@ function get_comments_from_api(id_movie){
 function input_data(titulo,descricao,genero,id){
     //set_image
     $("#imagem_filme")
-        .append("<img width='100%' src='./../../../movie_fig/mini_"+id+"'>");
+        .append("<img width='100%' src='./../../movie_fig/mini_"+id+"'>");
 
     //set_title
     $("#titulo_filme").text(titulo)
@@ -95,7 +95,7 @@ function input_comments(array_comments) {
                 '<div class="row"> ' +
                 '<div class="col-sm-2">' +
                 '<div class="row comment-image"> ' +
-                '<img src="./../../../movie_fig/mini_'+array_comments[comment].id_movie_new+'" class="full-width"/>' +
+                '<img src="./../../movie_fig/mini_'+array_comments[comment].id_movie_new+'" class="full-width"/>' +
                 ' </div> </div> ' +
                 '<div class="col-sm-10">' +
                 ' <div class="row comment-details"> ' +
