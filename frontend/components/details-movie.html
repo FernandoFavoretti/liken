@@ -1,0 +1,152 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Ache as melhores recomendacoes para cada um de seus filmes favoritos">
+	<meta name="keywords" content="filmes, movies, cinema">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Linken</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheet/liken.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheet/details.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheet/bootstrap-grid.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheet/media.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheet/slick.css"/>
+	<script src="../scripts/get_movie_infos.js"></script>
+
+
+
+</head>
+<body onload="get_parameter_for_api_call()">
+	<div class="modal-ghost"></div>
+	<div class="appendComment">
+
+		<div class="modal">
+			<div class="modal-head">
+				<h4>Adicionar Recomendação <span class="closeModal"></span></h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<input type="text" placeholder="Nome do filme" id="comment_nome_filme" >
+					<textarea placeholder="Adicionar comentário..." id="new_comment"></textarea>
+
+					<button type="button" id="add_comment" onclick="submit">Enviar</button>
+					<div class="clearfix"></div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="wrapper header">
+		<div class="container">
+			<div class="col-xs-5">
+				<img src="../img/header-logo.png" class="logo"/>
+			</div>
+			<div class="col-xs-7">
+				<form class="search-form">
+					<input type="text" class="search-input" placeholder="Pesquiser filmes"/>
+					<button type="button" class="search-button"></button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper content">
+		<div class="container">
+			<div class="principal-detail" id="div_dados_filme">
+				<h2 id="titulo_filme"></h2>
+				<div class="col-xs-3">
+					<div class="row" id="imagem_filme">
+
+					</div>
+				</div>
+				<div class="detail-content">
+					<div class="col-xs-9">
+						<div class="categories" id="categorias_filme">
+
+						</div>
+						<div class="synopsis" id="descricao_filme">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper content">
+		<div class="container">
+			<div class="principal-detail">
+				<h2>Principais Recomendações</h2>
+				<div class="slider">
+					<div>
+						<img src="../img/perdido.png" class=""/>
+						<div class="movie-name">Perdido em Marte</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/interestelar.png" class=""/>
+						<div class="movie-name">Interestelar</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/perdido.png" class=""/>
+						<div class="movie-name">Perdido em Marte</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/interestelar.png" class=""/>
+						<div class="movie-name">Interestelar</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/perdido.png" class=""/>
+						<div class="movie-name">Perdido em Marte</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/interestelar.png" class=""/>
+						<div class="movie-name">Interestelar</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/perdido.png" class=""/>
+						<div class="movie-name">Perdido em Marte</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/interestelar.png" class=""/>
+						<div class="movie-name">Interestelar</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/perdido.png" class=""/>
+						<div class="movie-name">Perdido em Marte</div>
+						<div class="votes">18.090</div>
+					</div>
+					<div>
+						<img src="../img/interestelar.png" class=""/>
+						<div class="movie-name">Interestelar</div>
+						<div class="votes">18.090</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper content">
+		<div class="container">
+			<div class="principal-detail">
+				<h2>Recomendações<span class="addComment"></span></h2>
+				<div id="comments_go_here"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../scripts/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../scripts/slick.min.js"></script>
+	<script src="../scripts/functions.js"></script>
+	<script src="../scripts/submit_comment.js"></script>
+
+</body>
+<html>

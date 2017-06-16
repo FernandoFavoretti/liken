@@ -1,0 +1,42 @@
+@media screen and (min-width: 1680px){
+	.search-form {
+		width: 45%;
+	}
+}
+
+@media screen and (max-width: 1680px){
+	h1{
+		font-size: 140px;
+	}
+	.desc-p{
+		font-size: 30px;
+	}
+}
+
+@media (min-width: 1200px){
+	.container{
+		width: 1420px;
+	}
+}
+
+@media screen and (max-height: 800px){
+	h1{
+		font-size: 110px;
+		margin-top: -30px;
+	}
+	.desc-p {
+		font-size: 24px;
+		margin-top: 12px;
+	}
+}
+
+@media screen and (max-height: 600px){
+	h1{
+		font-size: 100px;
+		margin-top: -30px;
+	}
+	.desc-p {
+		font-size: 23px;
+		margin-top: 8px;
+	}
+}
