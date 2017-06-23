@@ -25,11 +25,11 @@
 				<h4>Adicionar Recomendação <span class="closeModal"></span></h4>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form id="form_comment">
 					<input type="text" placeholder="Nome do filme" id="comment_nome_filme" >
 					<textarea placeholder="Adicionar comentário..." id="new_comment"></textarea>
 
-					<button type="button" id="add_comment" onclick="submit">Enviar</button>
+					<button type="button" onclick="addcomment()" id="add_comment_button">Enviar</button>
 					<div class="clearfix"></div>
 				</form>
 			</div>
@@ -97,9 +97,10 @@
 
 	<script src="scripts/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="scripts/slick.min.js"></script>
+	<script src="scripts/search_index.js"></script>
 	<script src="scripts/submit_comment.js"></script>
 	<script src="scripts/functions.js"></script>
-	<script src="scripts/search_index.js"></script>
+
 
 
 </body>
