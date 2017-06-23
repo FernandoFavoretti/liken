@@ -44,7 +44,7 @@ function get_movie_from_api(id_movie){
 
 function get_comments_from_api(id_movie){
     rest_result = jQuery.ajax({
-        url: "http://127.0.0.1:5000/linken/api/movies/getcomments/"+id_movie,
+        url: "http://104.198.178.60:4001/linken/api/movies/getcomments/"+id_movie,
         type: "GET",
 
         contentType: 'application/json; charset=utf-8',
@@ -65,7 +65,7 @@ function get_comments_from_api(id_movie){
 
 function get_most_suggest_from_api(id_movie){
     rest_result = jQuery.ajax({
-        url: "http://127.0.0.1:5000/linken/api/movies/getmost/"+id_movie,
+        url: "http://104.198.178.60:4001/linken/api/movies/getmost/"+id_movie,
         type: "GET",
 
         contentType: 'application/json; charset=utf-8',
