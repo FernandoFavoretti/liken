@@ -44,8 +44,8 @@
 			</div>
 			<div class="col-xs-7">
 				<form class="search-form">
-					<input type="text" class="search-input" placeholder="Pesquiser filmes"/>
-					<button type="button" class="search-button"></button>
+					<input type="text" id="search_movie_name" class="search-input" placeholder="Pesquiser filmes"/>
+					<button type="button" class="search-button" id="find_movie"></button>
 				</form>
 			</div>
 		</div>
@@ -78,57 +78,9 @@
 		<div class="container">
 			<div class="principal-detail">
 				<h2>Principais Recomendações</h2>
-				<div class="slider">
-					<div>
-						<img src="../img/perdido.png" class=""/>
-						<div class="movie-name">Perdido em Marte</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/interestelar.png" class=""/>
-						<div class="movie-name">Interestelar</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/perdido.png" class=""/>
-						<div class="movie-name">Perdido em Marte</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/interestelar.png" class=""/>
-						<div class="movie-name">Interestelar</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/perdido.png" class=""/>
-						<div class="movie-name">Perdido em Marte</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/interestelar.png" class=""/>
-						<div class="movie-name">Interestelar</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/perdido.png" class=""/>
-						<div class="movie-name">Perdido em Marte</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/interestelar.png" class=""/>
-						<div class="movie-name">Interestelar</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/perdido.png" class=""/>
-						<div class="movie-name">Perdido em Marte</div>
-						<div class="votes">18.090</div>
-					</div>
-					<div>
-						<img src="../img/interestelar.png" class=""/>
-						<div class="movie-name">Interestelar</div>
-						<div class="votes">18.090</div>
-					</div>
+				<div class="slider" id="suggest_slider">
+
+
 				</div>
 			</div>
 		</div>
@@ -145,8 +97,10 @@
 
 	<script src="../scripts/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../scripts/slick.min.js"></script>
-	<script src="../scripts/functions.js"></script>
 	<script src="../scripts/submit_comment.js"></script>
+	<script src="../scripts/functions.js"></script>
+	<script src="../scripts/search_index.js"></script>
+
 
 </body>
 <html>

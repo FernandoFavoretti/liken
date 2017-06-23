@@ -63,6 +63,22 @@ function get_comments_from_api(id_movie){
     });
 }
 
+function get_most_suggest_from_api(id_movie){
+    rest_result = jQuery.ajax({
+        url: "http://127.0.0.1:5000/linken/api/movies/getmost/"+id_movie,
+        type: "GET",
+
+        contentType: 'application/json; charset=utf-8',
+        success: function(resultData) {
+            input_most_suggest(resultData)
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+        },
+
+        timeout: 120000,
+    });
+}
+
 function input_data(titulo,descricao,genero,id){
     //set_image
     $("#imagem_filme")
@@ -80,8 +96,13 @@ function input_data(titulo,descricao,genero,id){
         $("#categorias_filme").append('<span>'+genero[gen]+'</span>')
     });
 
+    //pede mais sugeridos
+    get_most_suggest_from_api(id)
+
     //pede comentarios para api
     get_comments_from_api(id)
+
+
 
 }
 
@@ -103,5 +124,22 @@ function input_comments(array_comments) {
                 '<span> USER </span> ' +
                 '<p> '+array_comments[comment].comment+' </p> </div> </div> </div> </div>');
     });
+
+
+
+}
+
+function input_most_suggest(json_data){
+    $.each(json_data, function(key, value) {
+        var array_titulo_count = key.split("|")
+        $('#suggest_slider')
+            .append('<div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00">' +
+                '   <img src="./../../movie_fig/mini_'+array_titulo_count[0]+'" class=""/> '+
+                '   <div class="movie-name">'+array_titulo_count[1]+'</div> '+
+                '   <div class="votes">'+value+'</div> ' +
+                '</div>')
+
+    });
+
 
 }
