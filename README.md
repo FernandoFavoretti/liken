@@ -25,8 +25,11 @@
 
 1. Api http://104.198.178.60:4001
   a. /linken/api/health - Status do Servidor 
+  
   b. /linken/api/movies/<field_list>/<int:limit> - Retorna a lista de campos escolhida dentro de um limite (#list : titulo, descricao, genero, id (id_movie))
+  
   c. /linken/api/movies/id/<int:id> - Retorna tudo sobre um determinado id de filme
+  
   d. Funções internas para funcionamento da aplicação
   
 2. Aplicação: http://104.198.178.60:6001 
